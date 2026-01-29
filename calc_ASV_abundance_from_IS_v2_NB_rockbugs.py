@@ -31,7 +31,8 @@ else:
 # config file contains local directory paths for "data_dir" and "ASV_count_dir"
 with open("conf.json") as json_conf : 
     config = json.load(json_conf)
-    
+
+"""
 # Get the batch number for each of the samples
 sample_batches = {}
 with open(config["data_dir"] + 'G4_IS_sample_batches.csv') as csv_file:
@@ -43,6 +44,7 @@ with open(config["data_dir"] + 'G4_IS_sample_batches.csv') as csv_file:
         else:
             sample_batches[row[1]] = int(row[0])
         i += 1
+"""
 
 # Get the concentrations of the internal standards for each batch (from DNA quantification)
 IS_quants = {}
@@ -99,6 +101,8 @@ with open(config["ASV_count_dir"] + ASV_count_file) as csv_file:
 IS_counts_total = np.nansum(IS_counts,axis=0)
 
 ###### CREATE NEW TABLE W/ ABS ASV ESTIMATE ####### 
+
+## NOTE TO SELF (Jesse) : EDIT THIS BIT
 
 # includes BP,DR,TT to be excluded from count data to save
 all_IS_OTUs = ['0a1e7e4b25a59be69931c5d7f92751f5','f40b1be49d3bca5b8fabdd944abb31bf','2029a1010d7bebac2d09361c275f9fda',
